@@ -4,3 +4,21 @@ Collaborator recommendation is of great significance for facilitating research c
 
 
 ![image](https://user-images.githubusercontent.com/20887860/165262322-413f7b89-1274-4121-a7c5-6b888d66f49c.png)
+                                                     The overall framework of the proposed PRLR model.
+                                                     
+                                                     
+Algorithm 1 Pseudo-code of the PRLR model
+Input: Graph G=(V,E,X), embedding size d, window size w, walks per node r, walk length l, and other hyper-parameters α,β,γ
+
+Output: Node representation H∈R^(|V|×d)
+Perform r times of random walks with length l for each node to construct node context corpus C
+Random initialization for all parameters
+While not converged, do
+        Sample a mini-batch of nodes with their context
+        Calculate the gradient of ∇( αL_f+βL_ae) based on Equation (5) and Equation (9)
+        Update autoencoder model parameters
+        Calculate the gradient of ∇L_h based on Equation (10)
+        Update skip-gram model parameters
+End while
+Return representations h=h^K based on Equation (6)
+
